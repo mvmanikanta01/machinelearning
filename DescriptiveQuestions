@@ -1,1 +1,153 @@
+1.	What is linear regression?
+A.	It is the model used to find the dependent variable (y) based on the independent 	variable 	(x). This happens with linear relationship between x and y. This 	machine learning algorithm 	is based on supervised learning. While training the data,  	the model gets the best regression fit line by finding intercept and coefficient of x. 	Then the equation helps us to predict the value of y.
+
+2.	What are the assumptions of classical linear regression model?
+A.	a. It requires that the dependent variable   is a linear combination of the explanatory 	variables   and the error terms. Additionally we need the model to be fully 	specified. 
+	b. It requires error terms to be independent and identically distributed with expected 	value to be zero and variance to be constant. 
+	c. The regression model is correctly specified, and has an additive error term
+	d. Observations are independent of each other.
+	e. No auto-correlation
+
+3. 	What is R-Squared error?
+A.	R-squared is a statistical measure of how close the data are to the fitted regression 	line. It is also known as the coefficient of determination, or the coefficient of multiple 	determinations for multiple regressions.
+	R-squared = Explained variation / Total variation.
+	R-squared is always between 0 and 100%.
+	0% indicates that the model explains none of the variability of the response data.
+	100% indicates that the model explains all the variability of the response.
+	The more variance that is accounted for by the regression model the closer the data 	points will fall to the fitted regression line. Theoretically, if a model could explain 	100% of the variance, the fitted values would always equal the observed values and, 	therefore, all the data points would fall on the fitted regression line. R-	Squared cannot determine whether the coefficient estimates and predictions are 	biased.
+
+4.	What is Adjusted R-Squared error?
+A.	Adjusted R-squared is a modified version of R-squared that has been adjusted for the 	number of predictors in the model. The adjusted R-squared increases when the new 	term improves the model more than would be expected by chance. It decreases when 	a predictor improves the model by less than expected. Typically, the adjusted R-	squared is positive. It is always lower than the R-squared.
+
+5.	What is the difference between R-Squared and Adjusted R-Squared error?
+A.	The most obvious difference between adjusted R-squared and R-squared is simply 	that adjusted R-squared considers and tests different independent variables. It has the 	potential to be more accurate.
+	R-squared cannot be used to determine whether or not the coefficient estimates and 	predictions are biased.  In multiple linear regressions, the R-squared cannot tell us 	which regression variable is more important than the other.
+
+6.	What is OLS estimator and state its properties.
+A.	Ordinary Least Squares (OLS) method is widely used to estimate the parameters of a 	linear regression model. Properties:
+	1. Linear: Linear regression should be “linear in parameters”. OLS estimators are 	linear only with respect to the dependent variable and not with respect to the 	independent variables.
+	2. Least variance: Any estimator must be the minimum variance unbiased estimator. 	The estimator 	that has less variance will have individual data points closer to the 	mean. If the estimator has the least variance but is biased – it’s again not the best!
+	3. Unbiasedness: It is one of the most desirable properties of any estimator. The 	estimator should ideally be an unbiased estimator of true parameter values.	If the 	estimator is unbiased but doesn’t have the least variance – it’s not the best. If the 	estimator is both unbiased and has the least variance – it’s the best estimator.
+	4. Asymptotic Unbiasedness: As the sample size increases, the biasedness of OLS 	estimators disappears.
+	5. Consistency: An estimator should be consistent.
+
+7.	What is degree if freedom?
+A.	In predictive modelling, the degree of freedom refers to the number of parameters in 	the model that are estimated from data. This can also include both the coefficients of 	the model and the data used in the calculation of the error of the model.
+
+8.	T-test values for coefficient estimate in Linear regression.
+
+9.	What is the difference between f-test and t-test in context of null hypothesis?
+A.	Hypothesis testing starts with setting up the premises, which is followed by selecting 	a significance level. Next, we have to choose the test statistic, i.e. t-test or f-test. T-	test is a univariate hypothesis test, that is applied when standard deviation is not 	known and the sample size is small. F-test is statistical test that determines the	equality of the variances of the two normal populations. While t-test is used to 	compare two related samples, f-test is used to test the equality of two populations.
+
+10.	What happens when p value for f test is lower than alpha?
+A.	When p value for f test is lower than alpha (which is usually .05 if nothing else is 	specified), then we reject the null hypothesis.
+
+11.	What happens when p value for t test is lower than alpha
+A.	When p value for t test is lower than alpha (which is usually .05 if nothing else is 	specified), then we reject the null hypothesis.
+
+12.	What are residuals and its assumptions for error term?
+A.	Residuals in a statistical or machine learning model are the differences between 	observed and predicted values of data. They are also known as errors. Residuals are 	important when determining the quality of a model.
+
+13.	What is multi-colinirarity?
+A.	Multicollinearity occurs when two or more independent variables are highly 	correlated with one another in a regression model. This means that an independent 	variable can be predicted from another independent variable in a regression model.
+
+14.	What is auto-corelation?
+A.	Autocorrelation measures the relationship between a variable's current value and its 	past values. An autocorrelation of +1 represents a perfect positive correlation, while 	an autocorrelation of negative 1 represents a perfect negative correlation.
+
+15.	How to test a model performance?
+A.	Some common terms are:
+	True positives (TP): Predicted positive and are actually positive.
+	False positives (FP): Predicted positive and are actually negative.
+	True negatives (TN): Predicted negative and are actually negative.
+	False negatives (FN): Predicted negative and are actually positive.
+	Accuracy: The most commonly used metric to judge a model							 
+	Precision: Percentage of positive instances out of the total predicted positive instances
+					 
+	True positive rate: Percentage of positive instances out of the total actual 	positive instances.
+					 
+	Specificity: Percentage of negative instances out of the total actual negative instances.
+					 
+16.	What is logistic regression?
+A.	Logistic regression is a statistical analysis method used to predict a data value based 	on prior observations of a data set. A logistic regression model predicts a dependent 	data variable by analyzing the relationship between one or more existing independent 	variables. It helps in predicting the problems with two class values, including 	predictions such as “this or that,” “yes or no” and “A or B.”
+
+17.	What is the difference between linear and logistic regression?
+A.	The main difference between logistic regression and linear regression is that logistic 	regression provides a constant output, while linear regression provides a continuous 	output.
+	In logistic regression, the outcome has a limited number of possible values. However, 	in linear regression, it can have any one of an infinite number of possible values. .
+	Logistic regression is used when the response variable is categorical, such as yes/no, 	true/false and pass/fail. Linear regression is used when the response variable is 	continuous, such as number of hours, height and weight.
+
+18.	How to include qualitative information in regression analysis?
+A.	Regression analysis is a quantitative research method which is used when the study 	involves modelling and analysing several variables, where the relationship includes a 	dependent variable and one or more independent variables.
+	Qualitative or categorical variables can be very useful as predictor variables in 	regression analysis. Qualitative variables such as sex, marital status, or political 	affiliation can be represented by indicator or dummy variables. These variables take 	only two values, usually 0 and 1. The two values signify that the observation belongs 	to one of two possible categories.
+	A model with a dummy dependent variable (also known as a qualitative dependent 	variable) is one in which the dependent variable, as influenced by the explanatory 	variables, is qualitative in nature
+
+19.	What are the disadvantages of linear regression model?
+A.	Linear Regression Is Limited to Linear Relationships. That is, it assumes there is a 	straight-line relationship between them.
+	Linear Regression Only Looks at the Mean of the Dependent Variable. For example, 	if you look at the relationship between the birth weight of infants and maternal 	characteristics such as age, linear regression will look at the average weight of 	babies born to mothers of different ages.
+	Linear Regression Is Sensitive to Outliers.
+	Linear regression assumes that the data are independent. That means that the scores 	of one subject (such as a person) have nothing to do with those of another.
+
+20.	What are the disadvantages of logistic regression model?
+A.	If the number of observations is lesser than the number of features, Logistic 	Regression should not be used; otherwise, it may lead to over fitting.
+	The major limitation of Logistic Regression is the assumption of linearity between 	the dependent variable and the independent variables.
+	It can only be used to predict discrete functions.
+	Non-linear problems can’t be solved with logistic regression.
+	Logistic Regression requires average or no multicollinearity between independent 	variables.
+	It is tough to obtain complex relationships using logistic regression.
+
+21.	Learning rate
+A.	gradient descent is an optimization algorithm that estimates the error gradient for the current state of the model using examples from the training dataset, then updates the weights of the model using the back-propagation of errors algorithm. The amount that the weights are updated during training is referred to as the step size or the “learning rate.”
+The learning rate is a configurable hyper parameter used in the training of neural networks that has a small positive value, often in the range between 0.0 and 1.0.
+This means that a learning rate of 0.1, a traditionally common default value, would mean that weights in the network are updated 0.1 * (estimated weight error) or 10% of the estimated weight error each time the weights are updated.
+When the learning rat is too large, then the gradient descent will increase rather than decreasing the training error. When the learning rate is too small, it not only decreases the training time, but it can even stuck with a high training error.
+Hence, we should configure the learning rate to be moderate such that good numbers of weights are found.
+
+22.	Cost function
+A.	A cost function is a measure of how wrong the model is in terms of its ability to estimate the relationship between X and y. This is typically expressed as a difference or distance between the predicted value and the actual value.
+The objective of a ML model, therefore, is to find parameters, weights or a structure that minimises the cost function.
+Cost function thus helps the learner to correct / change behaviour of the model to minimize mistakes.
+
+23.	Bias
+A.	Machine learning bias, also sometimes called algorithm bias. It is a phenomenon that occurs when an algorithm produces results that are systemically prejudiced due to assumptions in the machine learning process. Machine learning bias generally stems from problems introduced by the individuals who design and/or train the machine learning systems. 
+Although these biases are often unintentional, the consequences of their presence in machine learning systems can be significant. Depending on how the machine learning systems are used, such biases could result in lower customer service experiences, reduced sales and revenue, unfair or possibly illegal actions, and potentially dangerous conditions. There are various ways that bias can be brought into a machine learning system.
+Algorithm bias: This occurs when there's a problem within the algorithm that performs the calculations.
+Sample bias: This happens when there's a problem with the data used to train the machine learning model. In this type of bias, the data used is either not large enough or representative enough to teach the system.
+Prejudice bias: In this case, the data used to train the system reflects existing prejudices, stereotypes and/or faulty societal assumptions, thereby introducing those same real-world biases into the machine learning itself. 
+Measurement bias: As the name suggests, this bias arises due to underlying problems with the accuracy of the data and how it was measured or assessed. 
+Exclusion bias: This happens when an important data point is left out of the data being used --something that can happen if the modellers don't recognize the data point as consequential.
+
+
+24.	Back propagation
+A.	When we have the model, we define some weight values in the beginning with the intention to get the minimum error. But after the training, error can be huge from the actual output. Then we need to explain the model to change the parameters such that error becomes minimal. This way of training the model is called ‘Back propagation’.
+The Back propagation algorithm looks for the minimum value of the error function using a technique called the gradient descent. The weights that minimize the error function is then considered to be a solution to the learning problem. 
+
+25.	Optimization
+A.	Optimization plays an important part in a machine learning project in addition to fitting the learning algorithm on the training dataset.
+The step of preparing the data prior to fitting the model can be framed as an optimization problem.
+Data preparation involves transforming raw data into a form that is most appropriate for the learning algorithms.
+Optimization fits the model at its best with minimum errors.
+
+26.	Boosting
+A.	Boosting gives power to machine learning models to improve their accuracy of prediction.
+It converts the weak learner to a strong learner by combining the prediction of each weak learner using average or considering higher votes.
+
+
+27.	Categorical data
+A.	Categorical data is a type of data that is used to group information with similar characteristics, while numerical data is a type of data that expresses information in the form of numbers. Example: Gender.
+Categorical data can be divided into two categories. Namely, Nominal (Which has no particular order) and Ordinal (Which has some order between values). For this we need to encode the given variables. Because, most machine learning algorithms cannot handle categorical variables unless we convert them to numerical values.
+We have multiple encoding libraries in sklearn module to encode the given variables.
+
+28.	Entropy
+A.	In simple terms, entropy is the measure of disorder.
+The higher the entropy, the harder it is to draw any conclusions from that information. Flipping a coin is an example of an action that provides information that is random. For a coin that has no affinity for heads or tails, the outcome of any number of tosses is difficult to predict. Because, there is no relationship between flipping and the outcome. This is the essence of entropy.
+It appears everywhere in machine learning: from the construction of decision trees to the training of deep neural networks, entropy is an essential measurement in machine learning.
+
+29.	Learning curve
+A.	A learning curve is a plot of model learning performance over experience or time.
+During the training of a machine learning model, the current state of the model at each step of the training algorithm can be evaluated. It can be evaluated on the training dataset to give an idea of how well the model is “learning.” It can also be evaluated on a hold-out validation dataset that is not part of the training dataset. Evaluation on the validation dataset gives an idea of how well the model is “generalizing.”
+Learning curve calculated from the training dataset that gives an idea of how well the model is learning is called train learning curve.
+Learning curve calculated from a hold-out validation dataset that gives an idea of how well the model is generalizing is called Validation Learning curve
+
+30.	Under fitting
+A.	It happens when a machine learning model is not complex enough to accurately capture relationships between a dataset’s features and a target variable.
+Using under fitted models for decision-making could be costly for businesses. For example, an under fitted model may suggest that you can always make better sales by spending more on marketing when in fact the model fails to capture a saturation effect (at some point, sales will flatten out no matter how much more you spend on marketing). If your business is relying on that model to determine your marketing budget, you will overspend on marketing.
 
