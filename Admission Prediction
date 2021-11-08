@@ -38,7 +38,7 @@ plt.xticks(())
 plt.yticks(())
 plt.show()
 
-#EVALUTION
+##EVALUTION
 import numpy as np
 from sklearn import metrics
 explained_variance= metrics.explained_variance_score(Y_test,Y_pred)
