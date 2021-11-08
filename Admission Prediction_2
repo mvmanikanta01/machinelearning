@@ -35,3 +35,23 @@ plt.plot(X1_test,Y1_pred,color = 'blue',linewidth=3)
 plt.xticks(())
 plt.yticks(())
 plt.show()
+
+import numpy as np
+from sklearn import metrics
+explained_variance= metrics.explained_variance_score(Y1_test,Y1_pred)
+mean_absolute_error = metrics.mean_absolute_error(Y1_test,Y1_pred)
+mse = metrics.mean_squared_error(Y1_test,Y1_pred)
+mean_squared_log_error = metrics.mean_squared_log_error(Y1_test,Y1_pred)
+median_absolute_error = metrics.median_absolute_error(Y1_test,Y1_pred)
+r2 = metrics.r2_score(Y1_test,Y1_pred)
+print('Explained variance =',round(explained_variance,2))
+print('Mean squared  log error = ',round(mean_squared_log_error,2))
+print('R-sqaure = ',round(r2,4))
+print('Mean absolute error  MAE = ',round(mean_absolute_error,2))
+print('Mean square error MSE = ',round(mse,2))
+print('Root mean square value RMSE = ',round(np.sqrt(mse),2))
+from statsmodels.api import OLS
+import statsmodels.api as sm
+X1 = sm.add_constant(X1)
+summ = OLS(Y1,X1).fit().summary()
+print(" summary of the data set is \n ",summ)
