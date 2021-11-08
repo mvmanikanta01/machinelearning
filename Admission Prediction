@@ -15,7 +15,7 @@ print(X.shape)
 from sklearn.impute import SimpleImputer
 imputer = SimpleImputer(missing_values=np.nan, strategy="mean")
 X[:,:1] = imputer.fit_transform(X[:,:1])
-print('X is as below===========================',X)
+print('X is as below=========================',X)
 
 from sklearn.model_selection import train_test_split
 X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.2,random_state=0)
