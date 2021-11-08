@@ -52,6 +52,6 @@ print('Mean square error MSE = ',round(mse,2))
 print('Root mean square value RMSE = ',round(np.sqrt(mse),2))
 from statsmodels.api import OLS
 import statsmodels.api as sm
-X2 = sm.add_constant(X)
+X2 = sm.add_constant(X2)
 summ = OLS(Y2,X2).fit().summary()
 print(" summary of the data set is \n ",summ)
