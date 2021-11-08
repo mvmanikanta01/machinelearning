@@ -1,0 +1,56 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+data = pd.read_csv(r'Admission_Prediction.csv')
+print(data)
+print('data is  \n ',data.info)
+print(data.describe())
+plt.scatter(data['Research'], data['Chance of Admit'])
+plt.show()
+
+X6 = data.iloc[:,7:8].values
+Y6 = data.iloc[:,-1].values
+print(X6.shape)
+
+from sklearn.impute import  SimpleImputer
+imputer = SimpleImputer(missing_values=np.nan,strategy="mean")
+X6[:,:7] = imputer.fit_transform(X6[:,:7])
+print('X6 is below \n',X6)
+
+from sklearn.model_selection import train_test_split
+X6_train,X6_test,Y6_train,Y6_test = train_test_split(X6,Y6,test_size=0.2, random_state=0)
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X6_train,Y6_train)
+print(" Intercept value is = ",regressor.intercept_)
+print(' Coefficient value is = ',regressor.coef_)
+
+# making prediction of X6
+Y6_pred = regressor.predict(X6_test)
+output_df = pd.DataFrame({'Actual':Y6_test,'Predicted':Y6_pred})
+print(" Actual and predicted values of Research vs coa==\n",output_df)
+plt.scatter(X6_test,Y6_test,color = 'black')
+plt.plot(X6_test,Y6_pred,color = 'blue',linewidth=3)
+plt.xticks(())
+plt.yticks(())
+plt.show()
+
+import numpy as np
+from sklearn import metrics
+explained_variance= metrics.explained_variance_score(Y6_test,Y6_pred)
+mean_absolute_error = metrics.mean_absolute_error(Y6_test,Y6_pred)
+mse = metrics.mean_squared_error(Y6_test,Y6_pred)
+mean_squared_log_error = metrics.mean_squared_log_error(Y6_test,Y6_pred)
+median_absolute_error = metrics.median_absolute_error(Y6_test,Y6_pred)
+r2 = metrics.r2_score(Y6_test,Y6_pred)
+print('Explained variance =',round(explained_variance,2))
+print('Mean squared  log error = ',round(mean_squared_log_error,2))
+print('R-sqaure = ',round(r2,4))
+print('Mean absolute error  MAE = ',round(mean_absolute_error,2))
+print('Mean square error MSE = ',round(mse,2))
+print('Root mean square value RMSE = ',round(np.sqrt(mse),2))
+from statsmodels.api import OLS
+import statsmodels.api as sm
+X6 = sm.add_constant(X6)
+summ = OLS(Y6,X6).fit().summary()
+print(" summary of the data set is \n ",summ)
