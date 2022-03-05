@@ -1,0 +1,146 @@
+import tensorflow as tf
+from keras.models import Sequential
+from tensorflow.keras import layers
+from keras.preprocessing.image import ImageDataGenerator
+from PIL import ImageFile
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+train_datagen = ImageDataGenerator(rescale=1. / 255, shear_range=.2, rotation_range=25)
+test_datagen = ImageDataGenerator(rescale=1. / 255)
+
+train_set = train_datagen.flow_from_directory('Telugu Dataset\Train', target_size=(38, 38),
+                                              batch_size=32, class_mode='categorical')
+test_set = test_datagen.flow_from_directory('Telugu Dataset\Test', target_size=(38, 38),
+                                            batch_size=32, class_mode='categorical')
+classifier = tf.keras.Sequential()
+classifier.add(layers.Conv2D(filters=32, kernel_size=3, padding='same', activation=tf.nn.relu, input_shape=(50, 50, 1)))
+classifier.add(layers.MaxPooling2D(pool_size=2, strides=2))
+
+classifier.add(layers.Conv2D(filters=32, kernel_size=3, padding='same', activation=tf.nn.relu))
+classifier.add(layers.MaxPooling2D(pool_size=2, strides=2))
+
+classifier.add(layers.Flatten())
+
+# classifier.add(layers.Dense(units =128, activation=tf.nn.relu))
+# classifier.add(layers.Dropout(0.3))
+
+classifier.add(layers.Dense(units=64, activation=tf.nn.relu))
+classifier.add(layers.Dropout(0.5))
+
+classifier.add(layers.Dense(units=51, activation=tf.nn.softmax))
+
+# opt = tf.optimizers.SGD(learning_rate=0.03)
+classifier.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+classifier.fit_generator(train_set, steps_per_epoch=200, epochs=50,
+                         validation_data=test_set, validation_steps=len(test_set))
+classifier.summary()
+classifier_json = classifier.to_json()
+
+with open("Project_test.json", 'w') as json_file:
+    json_file.write(classifier_json)
+classifier.save_weights("Project_test.h5")
+print("Saved Model to disk")
+import PIL
+from PIL import ImageTk, ImageDraw, Image
+from tkinter import *
+from keras.preprocessing import image
+import os
+
+
+def create_new_image():
+    width = 256
+    height = 256
+    center = height // 2
+    white = (255, 255, 255)
+    green = (0, 128, 0)
+
+    def save():
+        filename = 'D:\Project\image.jpg'
+        image.save(filename)
+
+    def paint(event):
+        x1, y1 = (event.x - 1), (event.y - 1)
+        x2, y2 = (event.x + 1), (event.y + 1)
+        cv.create_oval(x1, y1, x2, y2, fill='black', width=30)
+        draw.line([x1, y1, x2, y2], fill='black', width=30)
+
+    root = Tk()
+
+    cv = Canvas(root, width=width, height=height, bg='white')
+    cv.pack()
+
+    image = PIL.Image.new('RGB', (width, height), white)
+    draw = ImageDraw.Draw(image)
+
+
+    cv.pack(expand=YES, fill=BOTH)
+    cv.bind("<B1-Motion>", paint)
+    button = Button(text='Save', command=save)
+    button.pack()
+    
+    root.mainloop()
+
+
+def determine_char(res):
+    if res == 0:
+        print('Prediction : అ')
+    elif res == 1:
+        print('Prediction : ఆ')
+    elif res == 2:
+        print('Prediction : ఇ')
+    elif res == 3:
+        print('Prediction : ఈ')
+    elif res == 4:
+        print('Prediction : ఉ')
+    elif res == 5:
+        print('Prediction : ఊ')
+    elif res == 6:
+        print('Prediction : ఋ')
+    elif res == 7:
+        print('Prediction : ౠ')
+    elif res == 8:
+        print('Prediction : ఎ')
+    elif res == 9:
+        print('Prediction : ఏ')
+    elif res == 10:
+        print('Prediction : ఐ')
+    elif res == 11:
+        print('Prediction : ఒ')
+    elif res == 12:
+        print('Prediction : ఓ')
+    elif res == 13:
+        print('Prediction : ఔ')
+    elif res == 14:
+        print('Prediction : అం')
+    else:
+        print('Prediction : అః')
+
+
+import numpy as np
+
+
+def single_prediction(test_img):
+    test_img_arr = image.img_to_array(test_img)
+    test_img_arr = np.expand_dims(test_img_arr, axis=0)
+    prediction = classifier.predict(test_img_arr)
+    result = np.argmax(prediction, axis=1)
+    determine_char(result)
+
+
+def delete_created_image():
+    os.remove('D:\Project\image.jpg')
+
+
+import matplotlib.pyplot as plt
+
+
+def draw_n_guess_the_char():
+    create_new_image()
+    test_img = image.load_img('D:\Project\image.jpg', target_size=(40, 40, 3))
+    single_prediction(test_img)
+    plt.imshow(test_img)
+    delete_created_image()
+
+
+draw_n_guess_the_char()
