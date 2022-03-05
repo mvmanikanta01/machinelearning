@@ -1,0 +1,256 @@
+import os
+
+while(1):
+    print("====================================")
+    print("STUDENT LIBRARY")
+    print("====================================")
+    print("1. Administration Menu")
+    print("2. Book Issue")
+    print("3. Book Deposit")
+
+    main_menu = int(input("Choose from above list: "))
+    if main_menu==1:
+        print("1. Create Student Record")
+        print("2. Display all students records")
+        print("3. Display specific student record")
+        print("4. Modify student record")
+        print("5. Delete student record")
+        print("6. Create Book Record")
+        print("7. Display All Books")
+        print("8. Search the Book")
+        print("9. Modify the Book Record")
+        print("10.Delete the Book Record")
+        sub_menu = int(input("Choose from the above list: "))
+        if sub_menu == 1:
+            f = open("studentrecord.txt", "a")
+            ans = 'y'
+            while (ans == 'y'):
+                rn = input("Enter Student ID: ")
+                name = input("Student Name: ")
+                br = input("Student Branch: ")
+                bc = input("Batch year: ")
+                rec = rn + "\t" + name + "\t" + br + "\t" + bc + "\n"
+                f.write(rec)
+                ans = input("Do you wish to add another record ?")
+            f.close()
+        if (sub_menu == 2):
+            f = open("studentrecord.txt", "r")
+            for i in f:
+                print(i)
+            f.close()
+        if (sub_menu == 3):
+            f = open("studentrecord.txt", "r")
+            ans = 0
+            rn = input("Enter Student ID: ")
+            for i in f:
+                rec = i.split()
+                if (rec.count(rn) == 1):
+                    print(i)
+                    input()
+                    ans = 1
+                    break
+            if (ans == 0):
+                print("Sorry, Invalid ID")
+            f.close()
+        if (sub_menu == 4):
+            f = open("studentrecord.txt", "r")
+            f1 = open("temp.txt", "w")
+            ans = 0
+            rn = input("Enter Student ID to modify: ")
+            for i in f:
+                rec = i.split()
+                if (rec.count(rn) == 1):
+                    print(i)
+                    rn = input("Enter Student ID: ")
+                    name = input("Student Name: ")
+                    br = input("Student Branch: ")
+                    bc = input("Batch year: ")
+                    rec = rn + "\t" + name + "\t" + br + "\t" + bc + "\n"
+                    f1.write(rec1)
+                    ans = 1
+                else:
+                    f1.write(i)
+            f.close()
+            f1.close()
+            os.remove("studentrecord.txt")
+            os.rename("temp.txt", "student1.txt")
+            if (ans == 0):
+                print("INVALID ID")
+                input()
+        if (sub_menu == 5):
+            f = open("studentrecord.txt", "r")
+            f1 = open("temp.txt", "w")
+            ans = 0
+            rn = input("Enter Student ID to delete the record: ")
+            for i in f:
+                rec = i.split()
+                if (rec.count(rn) == 1):
+                    print(i)
+                    print("This record will be deleted")
+                    ans = 1
+                    continue
+                else:
+                    f1.write(i)
+            f.close()
+            f1.close()
+            os.remove("studentrecord.txt")
+            os.rename("temp.txt", "student1.txt")
+            if (ans == 0):
+                print("Sorry! INVALID ID")
+                input()
+                #######################################
+        if sub_menu == 6:
+            f = open("bookrecord.txt", "a")
+            ans = 'y'
+            while (ans == 'y'):
+                rn = input("Enter Book ID: ")
+                title = input("Book Title: ")
+                au = input("Book Author: ")
+                st = input("Book Status: ")
+                rec = rn + "\t" + title + "\t" + au + "\t" + st + "\n"
+                f.write(rec)
+                ans = input("Do you wish to add another record ?")
+            f.close()
+        if (sub_menu == 7):
+            f = open("bookrecord.txt", "r")
+            for i in f:
+                print(i)
+            f.close()
+        if (sub_menu == 8):
+            f = open("bookrecord.txt", "r")
+            ans = 0
+            rn = input("Enter Book ID: ")
+            for i in f:
+                rec = i.split()
+                if (rec.count(rn) == 1):
+                    print(i)
+                    input()
+                    ans = 1
+                    break
+            if (ans == 0):
+                print("Sorry, Invalid ID")
+                input()
+            f.close()
+        if (sub_menu == 9):
+            f = open("bookrecord", "r")
+            f1 = open("tempbook.txt", "w")
+            ans = 0
+            rn = input("Enter Book ID to modify: ")
+            for i in f:
+                rec = i.split()
+                if (rec.count(rn) == 1):
+                    print(i)
+                    rn = input("Enter Book ID: ")
+                    title = input("Book Title: ")
+                    au = input("Book Author: ")
+                    st = input("Book Status: ")
+                    rec = rn + "\t" + title + "\t" + au + "\t" + st + "\n"
+                    f1.write(rec1)
+                    ans = 1
+                else:
+                    f1.write(i)
+            f.close()
+            f1.close()
+            os.remove("bookrecord.txt")
+            os.rename("tempbook.txt", "bookrecord.txt")
+            if (ans == 0):
+                print("INVALID ID")
+                input()
+        if (sub_menu == 10):
+            f = open("bookrecord.txt", "r")
+            f1 = open("tempbook.txt", "w")
+            ans = 0
+            rn = input("Enter Book ID to delete the Book: ")
+            for i in f:
+                rec = i.split()
+                if (rec.count(rn) == 1):
+                    print(i)
+                    print("This record will be deleted")
+                    ans = 1
+                    continue
+                else:
+                    f1.write(i)
+            f.close()
+            f1.close()
+            os.remove("bookrecord.txt")
+            os.rename("tempbook.txt", "bookrecord.txt")
+            if (ans == 0):
+                print("Sorry! INVALID ID")
+                input()
+    ###########################################################################
+    if main_menu == 2:
+        f = open("studentrecord.txt", "r")
+        ans = 0
+        rn = input("Enter Student ID: ")
+        for i in f:
+            rec = i.split()
+            if (rec.count(rn) == 1):
+                print(i)
+                input()
+                ans = 1
+                break
+        if (ans == 0):
+            print("Sorry, Invalid ID")
+            input()
+        f.close()
+        f = open("bookrecord.txt", "r")
+        for i in f:
+            print(i)
+        f.close()
+
+        f = open("bookrecord.txt", "r")
+        f1 = open("tempbook.txt", "w")
+        ans = 0
+        rn = input("Enter the Book ID to issue: ")
+        for i in f:
+            rec = i.split()
+            if (rec.count(rn) == 1):
+                print(i)
+                rn = input("Enter Book ID: ")
+                title = input("Book Title: ")
+                au = input("Book Author: ")
+                st = input("Book Status: ")
+                rec = rn + "\t" + title + "\t" + au + "\t" + st + "\n"
+                f1.write(rec)
+                print("Your book has been issued")
+                ans = 1
+            else:
+                f1.write(i)
+        f.close()
+        f1.close()
+        os.remove("bookrecord.txt")
+        os.rename("tempbook.txt", "bookrecord.txt")
+        if (ans == 0):
+            print("INVALID ID")
+            input()
+#############################################################
+    if main_menu==3:
+        f = open("studentrecord.txt", "r")
+        ans = 0
+        rn = input("Enter Student ID: ")
+        for i in f:
+            rec = i.split()
+            if (rec.count(rn) == 1):
+                print(i)
+                input()
+                ans = 1
+                break
+        if (ans == 0):
+            print("Sorry, Invalid ID")
+            input()
+        f.close()
+        f = open("bookrecord.txt", "r")
+        ans = 0
+        rn = input("Enter Book ID: ")
+        for i in f:
+            rec = i.split()
+            if (rec.count(rn) == 1):
+                print(i)
+                input()
+                ans = 1
+                break
+        if (ans == 0):
+            print("Sorry, Invalid ID")
+            input()
+        f.close()
+
